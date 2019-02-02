@@ -16,6 +16,7 @@ $("#setting_who_to_follow")[0].checked = true;
 });
 $(document).on('change',".language_wrap select[name='language']", function(e) {
 $.cookie("language",$(this).val(),{path:'/',expires:3650});
+location.reload(true);
 });
 $(document).on('change',".post_privacy_wrap input[name='post_privacy']:checked", function(e) {
 localStorage.setItem("setting_post_privacy", $(this).val());
