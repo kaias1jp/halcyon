@@ -178,26 +178,31 @@ if(localStorage.setting_link_previews == "true") {
 $("#setting_link_previews")[0].checked = true;
 }
 if(localStorage.setting_desktop_notifications == "true") {
+if(!("Notification" in window)) {
+//alert("This browser is not supported notification");
+$("#setting_desktop_notifications")[0].checked = false;
+} else {
 $("#setting_desktop_notifications")[0].checked = true;
-if("serviceWorker" in navigator) {
+/*if("serviceWorker" in navigator) {
 $("#service_worker_box").show();
-}
+}*/
 if (Notification.permission === 'default') {
 Notification.requestPermission(function(p) {
 if (p === 'denied') {
 $("#setting_desktop_notifications")[0].checked = false;
-$("#service_worker_box").hide();
+//$("#service_worker_box").hide();
 }
 });
 }
 else if(Notification.permission == "denied") {
 $("#setting_desktop_notifications")[0].checked = false;
-$("#service_worker_box").hide();
+//$("#service_worker_box").hide();
 }
 }
-if(localStorage.setting_service_worker == "true") {
+}
+/*if(localStorage.setting_service_worker == "true") {
 $("#setting_service_worker")[0].checked = true;
-}
+}*/
 if(localStorage.setting_show_content_warning == "true") {
 $("#setting_show_content_warning")[0].checked = true;
 }
@@ -242,9 +247,9 @@ $("#setting_desktop_notifications")[0].checked = false;
 putMessage(__("You didn't allow notifications"));
 }
 else {
-if("serviceWorker" in navigator) {
+/*if("serviceWorker" in navigator) {
 $("#service_worker_box").show();
-}
+}*/
 putMessage(__("Desktop notifications enabled"));
 }
 });
@@ -255,19 +260,19 @@ $("#setting_desktop_notifications")[0].checked = false;
 putMessage(__("You didn't allow notifications"));
 }
 else {
-if("serviceWorker" in navigator) {
+/*if("serviceWorker" in navigator) {
 $("#service_worker_box").show();
-}
+}*/
 putMessage(__("Desktop notifications enabled"));
 }
 }
 else {
 localStorage.setItem("setting_desktop_notifications","false");
-$("#service_worker_box").hide();
+//$("#service_worker_box").hide();
 putMessage(__("Desktop notifications disabled"));
 }
 });
-$("#setting_service_worker").change(function() {
+/*$("#setting_service_worker").change(function() {
 if(this.checked) {
 localStorage.setItem("setting_service_worker","true");
 if("serviceWorker" in navigator) {
@@ -292,7 +297,7 @@ registration.unregister();
 localStorage.setItem("setting_service_worker","false");
 putMessage(__("Notifications when tab is closed disabled"));
 }
-});
+});*/
 $("#setting_show_content_warning").change(function() {
 if(this.checked) {
 localStorage.setItem("setting_show_content_warning","true");
