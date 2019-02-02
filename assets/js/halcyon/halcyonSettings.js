@@ -209,6 +209,7 @@ $("#setting_show_content_warning")[0].checked = true;
 if(localStorage.setting_show_nsfw == "true") {
 $("#setting_show_nsfw")[0].checked = true;
 }
+$(".instanceticker_wrap input[name='instanceticker'][value='"+localStorage.getItem("setting_instanceticker")+"']")[0].checked = true;
 });
 $(document).on('change',".post_streaming_wrap input[name='post_streaming']:checked", function(e) {
 localStorage.setItem("setting_post_stream", $(this).val());
@@ -318,6 +319,11 @@ localStorage.setItem("setting_show_nsfw","false");
 putMessage(__("NSFW content hidden"));
 }
 });
+$(document).on('change',".instanceticker_wrap input[name='instanceticker']:checked", function(e) {
+	localStorage.setItem("setting_instanceticker", $(this).val());
+	putMessage(__("Changed setting to")+" "+$(this).val());
+});
+
 }
 else if(window.location.pathname == "/settings/filters") {
 $('#js-settings_nav_filters').toggleClass('view');

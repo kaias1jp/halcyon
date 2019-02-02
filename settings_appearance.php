@@ -63,7 +63,7 @@
 </div>
 </div>
 </div>
-<!--<div id="service_worker_box" style="display:none">
+<!--<div id="service_worker_box" style="display:inherit">
 <div style="float:left;width:50%;text-align:right;margin-top:16px">
 <h3><?=_('Notifications when tab closed')?></h3>
 </div>
@@ -98,6 +98,24 @@
 </div>
 </div>
 </div>
+<div style="float:left;width:50%;text-align:right;margin-top:16px">
+<h3><?=_('InstanceTicker')?></h3>
+</div>
+<div class="instanceticker_wrap" style="float:left;width:50%;margin-top:8px;margin-bottom:-8px">
+<div class="radiobox">
+<input id="ticker-1" name="instanceticker" type="radio" value="none">
+<label for="ticker-1" class="radiotext"><?=_('None')?></label>
+</div>
+<div class="radiobox">
+<input id="ticker-2" name="instanceticker" type="radio" value="favicon">
+<label for="ticker-2" class="radiotext"><?=_('Favicon')?></label>
+</div>
+<div class="radiobox">
+<input id="ticker-3" name="instanceticker" type="radio" value="simple">
+<label for="ticker-3" class="radiotext"><?=_('Simple')?></label>
+</div>
+</div>
+
 <span style="visibility:hidden">-</span>
 </div>
 </article>

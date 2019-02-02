@@ -12,6 +12,29 @@ include("language.php");
 <title>Halcyon</title>
 <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <link rel="gettext" type="text/x-gettext-translation" href="/locale/<?=$locale?>/LC_MESSAGES/messages.po">
+<script>
+function cssChange( file ){
+	var link = document.createElement('link');
+	with( link ) {
+	href = file;
+	type = 'text/css';
+	rel = 'stylesheet';
+	}
+	var head = document.getElementsByTagName('head');
+	head.item(0).appendChild(link);
+}
+switch (localStorage.getItem("setting_instanceticker")) {
+case 'none':
+	break;
+case 'favicon':
+	cssChange("https://socialapi.app/api/instanceticker/css/halcyon/?mode=1");
+	break;
+case 'simple':
+	cssChange("https://socialapi.app/api/instanceticker/css/halcyon/?mode=0");
+	break;
+}
+</script>
+
 <link rel="stylesheet" href="/assets/css/style.css" media="all">
 <?php if(array_key_exists('darktheme', $_COOKIE) && $_COOKIE['darktheme'] == "true")
 echo '<link rel="stylesheet" href="/assets/css/dark.css" media="all">';
